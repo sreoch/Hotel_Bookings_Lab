@@ -1,9 +1,12 @@
 import React from "react";
 
-const Booking = () => {
+const Booking = ({booking}) => {
     
     return(
-        <h2>This is a booking</h2>
+        <>
+            <h1>{booking.name}</h1>
+            <p>Email: {booking.email}</p>
+        </>
     )
 }
 export default Booking;

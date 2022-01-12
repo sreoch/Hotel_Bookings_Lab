@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import Form from "../components/Form";
 import BookingList from "../components/BookingList";
+import BookingsService from "../services/BookingsService";
 
 const BookingContainer = () => {
+
+    const [bookings, setBookings] = useState([])
+
+    const createBooking = (newBooking) => {
+        BookingsService.postBooking(newBooking)
+        .then(savedBooking => setBookings([...bookings, savedBooking]))
+    }
 
     return(
         <>
         <h1>This is the container</h1>
-        <Form />
-        <BookingList />
+        <Form onBookingSubmit={createBooking}/>
+        <BookingList bookings={bookings} />
         </>
     )
 }
