@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Form from "../components/Form";
 import BookingList from "../components/BookingList";
 import BookingsService from "../services/BookingsService";
@@ -6,6 +6,11 @@ import BookingsService from "../services/BookingsService";
 const BookingContainer = () => {
 
     const [bookings, setBookings] = useState([])
+
+    useEffect(() => {
+        BookingsService.getBookings()
+        .then(bookings => setBookings(bookings))
+    }, [])
 
     const createBooking = (newBooking) => {
         BookingsService.postBooking(newBooking)

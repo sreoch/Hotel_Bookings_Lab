@@ -5,7 +5,7 @@ const BookingList = ({bookings}) => {
     
     const bookingNodes = bookings.map((booking) => {
         return (
-            <Booking key={booking._id} name={booking.name} email={booking.email} checkedIn={booking.checkedIn} />
+            <Booking key={booking._id} booking={booking} />
 
         )
     })
